@@ -1,5 +1,3 @@
 django
-social-auth-app-django
-python-social-auth[django]
 django-bootstrap4
 django-crispy-forms
