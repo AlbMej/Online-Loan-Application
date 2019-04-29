@@ -1,1 +1,1 @@
-loan_app/loan_app/settings/secrets
+loan_app/loan_app/settings/secrets.py
