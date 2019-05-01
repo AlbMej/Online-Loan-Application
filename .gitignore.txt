@@ -1,1 +1,2 @@
 loan_app/loan_app/settings/secrets.py
+env/

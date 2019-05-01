@@ -36,6 +36,10 @@ They should be in the following form
 1. Create the migrations `python manage.py makemigrations`
 2. Run the migrations `python manage.py migrate`
 3. Navigate to loan_app and run `python manage.py runserver`
+2. Activate the virtual environment by running `. env/bin/activate`
+3. Run the following command to install the dependencies `pip install -r requirements.txt`
+4. Navigate to loan_app and run `python manage.py runserver`
+5. To deactivate the virtual environment, run the following `deactivate`
 
 ### Dockerizing application
 

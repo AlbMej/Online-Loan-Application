@@ -1,4 +1,8 @@
-from .secrets import *
+try: 
+    from .secrets import *
+except ImportError: 
+    print("Error: make a local version of secrets.py containing the SECRET KEY and DATABASE credentials")
+
 """
 Django settings for loan_app project.
 
@@ -21,8 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-"""MAKE NOTE IN README
-# Moved secret keys to a local file """
+
+## Moved secret keys to a local file 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,12 +97,7 @@ WSGI_APPLICATION = 'loan_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+## Moved database credentials to a local file 
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

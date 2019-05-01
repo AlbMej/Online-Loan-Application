@@ -1,45 +1,76 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Field
+from django.core.exceptions import ValidationError
+from core.models import Loan
 
-BUSINESS_TYPE = (
-    ('', 'Choose...'),
-    ('FT', 'Food Truck'),
-    ('CON', 'Construction'),
-    ('OTH', 'Other')
-)
+class LoanFieldForm(forms.ModelForm):
 
-class AddressForm(forms.Form):
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name'}))
-    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    password = forms.CharField(widget=forms.PasswordInput())
-    address = forms.CharField(label='Address', widget=forms.TextInput(attrs={'placeholder': '1234 Main St, City, State, Zipcode'}))
-    amount_required = forms.CharField(label = 'Amount required')
-    business_type = forms.ChoiceField(choices=BUSINESS_TYPE)
-    years_in_business = forms.CharField(label='Years in business')
-    agree = forms.BooleanField(required=False)
+    class Meta:
+        model = Loan
+        fields = ('first_name', 'last_name', 'email', 'phone', 
+                'address', 'city', 'state', 'zip_code', 'amount_required', 
+                'business_type', 'years_in_business', 'other', 'agree')
+
+        BUSINESS_TYPE = (
+                ('', 'Choose...'),
+                ('FT', 'Food Truck'),
+                ('CON', 'Construction'),
+                ('OTH', 'Other')
+            )
+
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'Ex. Alberto'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Ex. Mejia'}), 
+            'email': forms.TextInput(attrs={'placeholder': 'Ex. me@caminofinancial.com'}), 
+            'phone': forms.TextInput(attrs={'placeholder': 'Ex. 914 123 4567'}),
+            'address': forms.TextInput(attrs={'placeholder': 'Apartment, studio, or floor, 1234 Main St'}),
+            'city': forms.TextInput(attrs={'placeholder': 'Yonkers'}),
+            'state': forms.TextInput(attrs={'placeholder': 'NY'}),
+            'zip_code': forms.TextInput(attrs={'placeholder': '10701'}),
+            'amount_required': forms.TextInput(attrs={'placeholder': '7500'}),
+            'years_in_business': forms.TextInput(attrs={'placeholder': '3'}),
+            'other': forms.TextInput(attrs={'placeholder': 'N/A'})
+        }
 
 class CustomCheckbox(Field):
     template = 'custom_checkbox.html'
 
-class CustomFieldForm(AddressForm):
+class CustomFieldForm(LoanFieldForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['agree'].required = True 
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Row(
-                Column('name', css_class='form-group col-md-6 mb-0'),
-                Column('email', css_class='form-group col-md-6 mb-0'),
+                Column('first_name', css_class='form-group col-md-6 mb-0'),
+                Column('last_name', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
             ),
-            'password',
-            'address',
+
             Row(
-                Column('amount_required', css_class='form-group col-md-6 mb-0'),
+                Column('email', css_class='form-group col-md-6 mb-0'),
+                Column('phone', css_class='form-group col-md-6 mb-0'),
+                css_class='form-row'
+            ),
+
+
+            Row(
+                Column('address', css_class='form-group col-md-6 mb-0'),
+                Column('city', css_class='form-group col-md-2 mb-0'),
+                Column('state', css_class='form-group col-md-2 mb-0'),
+                Column('zip_code', css_class='form-group col-md-2 mb-0'),
+                css_class='form-row'
+            ),
+
+            Row(
+                Column('amount_required', css_class='form-group col-md-4 mb-0'),
                 Column('business_type', css_class='form-group col-md-4 mb-0'),
+                Column('other', css_class='form-group col-md-2 mb-0'),
                 Column('years_in_business', css_class='form-group col-md-2 mb-0'),
                 css_class='form-row'
             ),
+
             CustomCheckbox('agree'),
-            Submit('submit', 'Sign in')
+            Submit('submit', 'Submit')
         )

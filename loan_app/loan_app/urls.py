@@ -20,9 +20,11 @@ from core import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('signup/', views.signup, name='signup'),
-
-    path('loanform/', views.LoanForm.as_view(), name='loanform'),
+    path('submit_form', views.submit_form, name = 'loanform'),
+    # path('loanform/', views.LoanForm.as_view(), name='loanform'),
     path('success/', views.SuccessView.as_view(), name='success'),
+    path('denied/', views.DeniedView.as_view(), name='denied'),
+    path('preapproved/', views.PreapprovedView.as_view(), name='preapproved'),
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
