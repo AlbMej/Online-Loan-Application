@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # AUTHENTICATION_BACKENDS = [
 #     'social_core.backends.yammer.YammerOAuth2'
@@ -51,7 +51,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 INSTALLED_APPS = [
     'core',
     'loan_app',
-    'social_django',
     'bootstrap4',
     'crispy_forms',
     'django.contrib.admin',
