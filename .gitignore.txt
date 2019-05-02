@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+loan_app/core/__pycache__/
+loan_app/core/migrations/__pycache__/
+loan_app/loan_app/settings/__pycache__/
+loan_app/loan_app/__pycache__/
 
 # C extensions
 *.so
