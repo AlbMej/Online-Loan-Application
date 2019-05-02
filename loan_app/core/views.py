@@ -41,6 +41,7 @@ class DeniedView(TemplateView):
 class PreapprovedView(TemplateView):
     template_name = 'preapproved.html'
 
+@login_required
 def submit_form(request):
     form = CustomFieldForm(request.POST)
     if request.method == 'POST':
