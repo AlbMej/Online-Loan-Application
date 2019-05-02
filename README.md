@@ -51,11 +51,53 @@ They should be in the following form:
 I am currently using Window's WSL Ubuntu version Ubuntu 18.04, so I followed this tutorial: 
 https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly
 
-*Having trouble configuring Docker to wrok with Django with my Windows 10 WSL setup. A lot of my problems appear to be open issues on GitHub*
+Make sure to download Docker Desktop. 
+The Dockerfile and docker-compose.yml includes the necessary to dockerize this application. Make sure to remove any environment folders before dockerizing the application (e.g. /env/)
+To use the database within the container, you must change the DATABASES variable to:
+
+	DATABASES = {
+	    'default': {
+	        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+	        'NAME': 'postgres',
+	        'USER': 'postgres',
+	        'HOST': 'db',
+	        'PORT': 5432,
+	    }
+	}
+
+Now, in Powershell, run `docker-compose up --build` and wait as it builds the container. 
+When the log shows "database system is ready to accept connections", open up a new Powershell window in the root of the project directory.
+
+Run the following commands:
+
+	docker-compose run --rm web python loan_app/manage.py makemigrations --settings=loan_app.settings.settings
+	docker-compose run --rm web python loan_app/manage.py migrate --settings=loan_app.settings.settings
+	docker-compose run --rm -p 8000:8000 web python loan_app/manage.py runserver 0.0.0.0:8000
+
+Viola! The project is now running through a container :)
+Access it through http://127.0.0.1:8000/
+
+### Set up project on a Heroku server
+
+Make sure to have the Heroku CLI pre installed. In my Ubuntu 18.04 terminal, I used `curl https://cli-assets.heroku.com/install-ubuntu.sh | sh`
+
+1. Login to Heroku: `heroku login`
+2. Install the Heroku container registry plugin for the CLI: `heroku plugins:install @heroku-cli/plugin-container-registry`
+3. Login to the registry: `heroku container:login`
+4. Create a Heroku app:
+
+	You can do by just running `heroku create` and it will randomly generate an app name for you
+	Or you can dp something like `heroku create albmej-loan-application`
+
+5. Then, push your image: `heroku container:push web --app albmej-loan-application`
+
+Unfortunately steps 6 and 7 do not work with my Windows setup. Running through a lot of headaches trying to get it to work. 
+
+6. At this point the next step would be to release the image: `heroku container:push web --app albmej-loan-application`
+7. Then `heroku open --app albmej-loan-application` to check out the live app
 
 ## TODO:
 
   * Implement SMTP Email Backend (Not required but a good addition)
   * Find out why email backend console doesn't work
-  * Dockerize application
   * Add to a server (Heroku)
