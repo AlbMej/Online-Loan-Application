@@ -51,7 +51,8 @@ They should be in the following form:
 I am currently using Window's WSL Ubuntu version Ubuntu 18.04, so I followed this tutorial: 
 https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly
 
-Make sure to download Docker Desktop. 
+Make sure to download Docker Desktop. I am using Powershell to run these commands as my WSL did not work (Windows, Docker, WSL, so many headaches...)
+
 The Dockerfile and docker-compose.yml includes the necessary to dockerize this application. Make sure to remove any environment folders before dockerizing the application (e.g. /env/)
 To use the database within the container, you must change the DATABASES variable to:
 
@@ -87,7 +88,8 @@ Make sure to have the Heroku CLI pre installed. In my Ubuntu 18.04 terminal, I u
 4. Create a Heroku app:
 
 	You can do by just running `heroku create` and it will randomly generate an app name for you
-	Or you can dp something like `heroku create albmej-loan-application`
+
+	Or you can do something like `heroku create albmej-loan-application`
 
 5. Then, push your image: `heroku container:push web --app albmej-loan-application`
 
