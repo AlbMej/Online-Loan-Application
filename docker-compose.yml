@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  db:
+    image: "postgres:11.2-alpine"
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+
+  web:
+    build: "."
+    user: "1000:1000"
+    volumes:
+      - ".:/code"
+    ports:
+      - "8000:8000"
+    links:
+      - "db"
+
+volumes:
+  pg_data:
