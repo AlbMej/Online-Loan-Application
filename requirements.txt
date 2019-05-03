@@ -1,4 +1,10 @@
-django==2.2.1
+django>=2.2.1
 django-bootstrap4
 django-crispy-forms
 psycopg2-binary
+whitenoise
+gunicorn
+dj-database-url
+dj-static
+Unipath
+python-decouple
