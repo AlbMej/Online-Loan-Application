@@ -23,3 +23,6 @@ COPY . /code/
 
 # Run
 CMD ["python", "loan_app/manage.py", "runserver", "0.0.0.0:8000"]
+
+#Expose server port
+EXPOSE 8000

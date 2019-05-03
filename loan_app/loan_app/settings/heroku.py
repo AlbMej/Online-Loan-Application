@@ -29,4 +29,4 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # }
 
 DATABASES['default'] =  dj_database_url.config()
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', ".herokuapp.com", ]
+ALLOWED_HOSTS = ['albmej-loan-application.herokuapp.com']

@@ -3,7 +3,7 @@ django-bootstrap4
 django-crispy-forms
 psycopg2-binary
 whitenoise
-gunicorn
+gunicorn==19.7.1
 dj-database-url
 dj-static
 Unipath
