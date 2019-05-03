@@ -50,7 +50,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
+    'loan_app.core',
     'loan_app',
     'bootstrap4',
     'crispy_forms',
