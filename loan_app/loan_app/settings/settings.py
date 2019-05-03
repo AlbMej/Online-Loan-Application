@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import dj_database_url
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -136,8 +136,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-# From here on out, I will be defining variables in accordance to deploying to Heroku. 
-# Thus, some variables may be over written (For tutorial purposes)
+######## From here on out, I will be defining variables in accordance to deploying to Heroku.  ###########
+######## Thus, some variables may be over written (For tutorial purposes)                      ###########
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
