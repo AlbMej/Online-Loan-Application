@@ -95,7 +95,7 @@ Make sure to have the Heroku CLI pre installed. In my Ubuntu 18.04 terminal, I u
 
 Unfortunately steps 6 and 7 do not work with my Windows setup. Running through a lot of headaches trying to get it to work. 
 
-6. At this point the next step would be to release the image: `heroku container:push web --app albmej-loan-application`
+6. At this point the next step would be to release the image: `heroku container:release web --app albmej-loan-application`
 7. Then `heroku open --app albmej-loan-application` to check out the live app
 
 ## TODO:

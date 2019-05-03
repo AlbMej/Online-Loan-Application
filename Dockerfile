@@ -23,4 +23,3 @@ COPY . /code/
 
 # Expose to host
 CMD ["python", "manage.py", "runserver", "0.0.0.0", 8000"]
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet albmej-loan-application.dll
