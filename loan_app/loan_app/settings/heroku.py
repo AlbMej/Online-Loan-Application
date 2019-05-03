@@ -28,5 +28,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 #     )
 # }
 
-DATABASES = {'default': DATABASE_URL}
+DATABASES = {'default': {
+                        DATABASE_URL
+                        }
+            }
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', ".herokuapp.com", ]
