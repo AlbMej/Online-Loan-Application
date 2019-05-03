@@ -82,6 +82,10 @@ Access it through http://127.0.0.1:8000/
 
 Make sure to have the Heroku CLI pre installed. In my Ubuntu 18.04 terminal, I used `curl https://cli-assets.heroku.com/install-ubuntu.sh | sh`
 
+heroku config:set DJANGO_SETTINGS_MODULE=loan_app.settings.heroku --app albmej-loan-application
+heroku addons:create heroku-postgresql:hobby-dev
+
+
 1. Login to Heroku: `heroku login`
 2. Install the Heroku container registry plugin for the CLI: `heroku plugins:install @heroku-cli/plugin-container-registry`
 3. Login to the registry: `heroku container:login`
@@ -97,6 +101,11 @@ Unfortunately steps 6 and 7 do not work with my Windows setup. Running through a
 
 6. At this point the next step would be to release the image: `heroku container:release web --app albmej-loan-application`
 7. Then `heroku open --app albmej-loan-application` to check out the live app
+
+
+heroku ps:scale web=1 --app albmej-loan-application
+heroku config:set DJANGO_SETTINGS_MODULE=settings.heroku --app albmej-loan-application
+
 
 ## TODO:
 
