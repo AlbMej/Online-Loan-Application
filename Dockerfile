@@ -21,5 +21,5 @@ RUN pip3 install -r /code/requirements.txt
 # Copy project
 COPY . /code/
 
-# Expose to host
-CMD ["python", "loan_app/manage.py", "runserver", "0.0.0.0:8000", ]
+# Run
+CMD ["python", "loan_app/manage.py", "runserver", "0.0.0.0:8000"]

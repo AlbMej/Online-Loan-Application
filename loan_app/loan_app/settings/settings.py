@@ -91,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'loan_app.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
