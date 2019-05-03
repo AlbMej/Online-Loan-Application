@@ -28,5 +28,5 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 #     )
 # }
 
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = { 'default': dj_database_url.config() }
 ALLOWED_HOSTS = ['albmej-loan-application.herokuapp.com']
