@@ -22,7 +22,8 @@ RUN pip3 install -r /code/requirements.txt
 COPY . /code/
 
 # Run
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD gunicorn loan_app.wsgi:application --log-file -
 
 #Expose server port
 EXPOSE 8000
