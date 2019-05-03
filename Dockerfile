@@ -22,7 +22,7 @@ RUN pip3 install -r /code/requirements.txt
 COPY . /code/
 
 # Run
-CMD ["python", "loan_app/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 #Expose server port
 EXPOSE 8000
